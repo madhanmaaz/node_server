@@ -1,0 +1,9 @@
+{
+    "username": "frozen",
+    "password": "server",
+    "startup": "on",
+    "exvisible": "on",
+    "exupload": "on",
+    "expath": "D:\\",
+    "depath": ""
+}

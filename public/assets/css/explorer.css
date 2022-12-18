@@ -1,0 +1,75 @@
+* {
+    transition: 0s;
+}
+
+body {
+    max-width: 800px;
+    margin: auto;
+    background: #001219;
+    color: #e5e5e5;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #00b4d8;
+    padding: 1rem 0;
+}
+
+header a {
+    font-size: 1.1rem;
+    color: #e5e5e5;
+    margin: 0 .4rem;
+}
+
+.path {
+    background: linear-gradient(90deg, #0096c7, #00b4d8, #90e0ef);
+    position: sticky;
+    top: 0;
+    padding: .1rem 0;
+}
+
+.path button {
+    background: #000;
+    color: #e5e5e5;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    padding: .3rem .7rem;
+    margin-right: .1rem;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.path button:hover{
+    background: #ff3600;
+}
+
+.info {
+    background: #03045e;
+    padding: .5rem;
+    color: #e5e5e5;
+}
+
+.data .item {
+    background: #000814;
+    padding: .2rem;
+    color: #e5e5e5;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+
+.data .item i {
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+}
+
+.data .item:nth-child(even) {
+    background: #003566;
+}
+
+.data h2 {
+    margin: 1rem;
+}

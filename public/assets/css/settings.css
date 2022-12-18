@@ -1,0 +1,107 @@
+body{
+    max-width: 800px;
+    background: #001219;
+    margin: auto;
+    height: 100vh;
+}
+
+.header{
+    display: flex;
+    background: #000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 10vh;
+}
+
+.header h1{
+    color: #ff3600;
+    text-transform: uppercase;
+}
+
+.header div{
+    display: flex;
+    align-items: center;
+}
+
+.header div a{
+    color: #e5e5e5;
+    font-size: 1.4rem;
+}
+
+.header .res-box{
+    color: #00ff40;
+}
+
+.container{
+    padding: 1rem 0;
+    height: 90vh;
+}
+
+.container h4{
+    font-size: 1.3rem;
+    color: #ffb703;
+    text-transform: capitalize;
+}
+
+.container li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e5e5e5;
+    padding: .5rem 0;
+}
+
+.container li p{
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+} 
+
+.container li p i{
+    padding: .5rem 1rem;
+    font-size: 1.8rem;
+}
+
+input,
+button,
+select{
+    text-transform: capitalize;
+    background: #032735;
+    color: #e5e5e5;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    margin: .1rem;
+}
+
+input{
+    width: 100%;
+}
+
+.help{
+    display: flex;
+    align-items: center;
+    background: #000;
+    color: #d90429;
+    padding: .3rem;
+    font-size: 1.1rem;
+    margin: .5rem 0;
+}
+
+a{
+    color: #4cc9f0;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+input{
+    text-transform: none;
+}
+
+@media(max-width: 800px){
+    .container{
+        padding: .5rem;
+    }
+}
+

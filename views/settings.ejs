@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frozen Settings</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/settings.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>Frozen Settings</h1>
+        <div>
+            <a href="/">Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h4>System</h4>
+        <li>
+            <p>
+                <i class="so so-power-off"></i>
+                <span>Close Server</span>
+            </p>
+            <a href="/server-close"><button>Power Off</button></a>
+        </li>
+        <li>
+            <p>
+                <i class="so so-running"></i>
+                <span>auto startup</span>
+            </p>
+            <select id="start-up-btn">
+                <option value="on" <% if(startup=='on' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >on
+                </option>
+                <option value="off" <% if(startup=='off' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >off
+                </option>
+            </select>
+        </li>
+        <h4>local file explorer</h4>
+        <li>
+            <p>
+                <i class="so so-folder"></i>
+                <span>Explorer visible</span>
+            </p>
+            <select id="ex-visible">
+                <option value="on" <% if(exvisible=='on' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >On
+                </option>
+                <option value="off" <% if(exvisible=='off' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >Off
+                </option>
+            </select>
+        </li>
+
+        <li>
+            <p>
+                <i class="so so-folder"></i>
+                <span>Explorer upload</span>
+            </p>
+            <select id="ex-upload">
+                <option value="on" <% if(exupload=='on' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >On
+                </option>
+                <option value="off" <% if(exupload=='off' ) {%>
+                    <%- "selected" %>
+                        <% } %>
+                            >Off
+                </option>
+            </select>
+        </li>
+        <li>
+            <p>
+                <i class="so so-road"></i>
+                <span>Ex default path</span>
+            </p>
+            <div>
+                <%- expath %>
+            </div>
+        </li>
+        <li>
+            <input type="text" id="change-path" placeholder="Change path">
+            <button id="change-path-btn">change</button>
+        </li>
+        <div class="help">
+            Enable node app feature in firewall settings. otherwise file explorer won't work.
+            <a href="/assets/help/node_firewall.png">help!</a>
+        </div>
+
+        <h4>Change password</h4>
+        <li style="justify-content: left;">
+            <input type="text" id="pass1" placeholder="Old password">
+            <input type="text" id="pass2" placeholder="New password">
+            <input id="chng-pass-btn" type="submit">
+        </li>
+    </div>
+
+    <script>
+        let resBox = document.querySelector('.res-box')
+        let pass1 = document.getElementById('pass1')
+        let pass2 = document.getElementById('pass2')
+        let changePassBtn = document.getElementById('chng-pass-btn')
+        let startUpBtn = document.getElementById('start-up-btn')
+        let exVisible = document.getElementById('ex-visible')
+        let exUpload = document.getElementById('ex-upload')
+        let changePath = document.getElementById('change-path')
+        let changePathBtn = document.getElementById('change-path-btn')
+
+        startUpBtn.addEventListener('change', () => {
+            sendReq({
+                type: "change-start-up",
+                value: startUpBtn.value
+            })
+        })
+
+        exVisible.addEventListener('change', () => {
+            sendReq({
+                type: "ex-visible",
+                value: exVisible.value
+            })
+        })
+
+        exUpload.addEventListener('change', () => {
+            sendReq({
+                type: "ex-upload",
+                value: exUpload.value
+            })
+        })
+
+        changePathBtn.addEventListener('click', () => {
+            if (changePath.value.length > 0) {
+                sendReq({
+                    type: "change-path",
+                    value: changePath.value
+                })
+            }
+        })
+
+        changePassBtn.addEventListener('click', () => {
+            if (pass1.value.length > 0 && pass2.value.length > 0) {
+                sendReq({
+                    type: "change-password",
+                    pass1: pass1.value,
+                    pass2: pass2.value
+                })
+            }
+        })
+
+        function sendReq(query) {
+            fetch(`/change-settings?data=${JSON.stringify(query)}`).then(res => {
+                res.json().then(data => {
+                    console.log(data.res)
+                    location.reload()
+                })
+            })
+        }
+    </script>
+</body>
+
+</html>

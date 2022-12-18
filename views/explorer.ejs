@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frozen Explorer</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/explorer.css">
+</head>
+
+<body>
+    <header>
+        <h1>Frozen Explorer</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="/explorer-upload">Upload</a>
+        </div>
+    </header>
+    
+    <div class="path">
+        
+    </div>
+
+    <div class="info">
+        
+    </div>
+    <section class="data">
+        <%- data %>
+        <!-- <a href="" class="item">
+            <i class="so so-folder"></i>
+            folder
+        </a>
+        <a href="" class="item">
+            <i class="so so-file"></i>
+            file
+        </a> -->
+    </section>
+
+    <script>
+        let filesLen = document.querySelectorAll('.data .file').length
+        let folderLen = document.querySelectorAll('.data .folder').length
+        let linkPath = document.querySelector('.path')
+        let infoBox = document.querySelector('.info')
+        
+        infoBox.innerHTML = `
+        <span>Folders ${folderLen}</span> <b>|</b>
+        <span>Files ${filesLen}</span>
+        `
+
+        let path = "<%- path %>"
+        path = path.split('/explorer')[1]
+        
+        let uri = `/explorer`
+        let links = `<a href="${uri}"><button>/</button></a>`
+        let getSplited = path.split('/')
+        let currentUri = uri
+        
+        for(let i of getSplited){
+            if(i != ''){
+                currentUri += `/${i}`
+                links += 
+                `<a href="${currentUri}"><button>${i}</button></a>`
+            }
+        }
+        
+        linkPath.innerHTML = links
+    </script>
+</body>
+
+</html>
