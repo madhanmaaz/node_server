@@ -32,10 +32,10 @@ addStartUp(realPath("server.vbs"))
 
 time.sleep(2)
 print("installing package.json")
-# command("npm install package.json")
+command("npm install package.json")
 
 time.sleep(1)
-# command("npm audit fix --force")
+command("npm audit fix --force")
 
 time.sleep(2)
 os.startfile(realPath("server.vbs"))
